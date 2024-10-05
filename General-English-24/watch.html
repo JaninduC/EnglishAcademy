@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Streaming</title>
+    <!-- Video.js CSS -->
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet">
+</head>
+<body>
+
+<h1>Watch Video</h1>
+
+<!-- Video.js Player -->
+<video id="my-video" class="video-js vjs-default-skin" controls preload="auto" width="640" height="264"
+       data-setup="{}">
+    <source id="video-source" src="" type="application/x-mpegURL">
+</video>
+
+<!-- Video.js JS -->
+<script src="https://vjs.zencdn.net/7.14.3/video.js"></script>
+
+<script>
+    // Wait for the DOM content to be loaded
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get the value of the 'watch' query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const paramValue = urlParams.get('video');  // Get the 'watch' parameter from the URL
+
+        // Set the 'src' attribute of the video source
+        if (paramValue) {
+            // Initialize Video.js player
+            const player = videojs('my-video');
+
+            // Set the HLS source dynamically
+            player.src({
+                src: `https://app.dushmanthaacademy.com/video/videos/${paramValue}/index.m3u8`,
+                type: 'application/x-mpegURL'
+            });
+
+            // Play the video after loading the source
+            player.ready(function() {
+                player.play();
+            });
+        }
+    });
+</script>
+
+</body>
+</html>

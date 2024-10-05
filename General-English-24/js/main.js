@@ -111,3 +111,80 @@
 
 
 
+
+const products = [
+    { image: 'img/video_image/0.jpg', title: 'Introduction' ,url: 'watch.html?video=Introduction'},
+    { image: 'img/video_image/1.jpg', title: 'Test 1 first paper' ,url: 'watch.html?video=test1firstpaper'},
+    { image: 'img/video_image/2.jpg', title: 'Test 1 second paper' ,url: 'watch.html?video=test1secondepaper'},
+    { image: 'img/video_image/3.jpg', title: 'Test 2 first paper' ,url: 'watch.html?video=test2firstpaper'},
+    { image: 'img/video_image/4.jpg', title: 'Test 2 second paper' ,url: 'watch.html?video=test2secondepaper'},
+    { image: 'img/video_image/5.jpg', title: 'Test 3 first paper' ,url: 'watch.html?video=test3firstpaper'},
+    { image: 'img/video_image/6.jpg', title: 'Test 3 second paper' ,url: 'watch.html?video=test3secondepaper'},
+    { image: 'img/video_image/7.jpg', title: 'Test 4 first paper' ,url: 'watch.html?video=test4firstpaper'},
+    { image: 'img/video_image/8.jpg', title: 'Test 4 second paper' ,url: 'watch.html?video=test4secondepaper'},
+    { image: 'img/video_image/9.jpg', title: 'Test 5 first paper' ,url: 'watch.html?video=test5firstpaper'},
+    { image: 'img/video_image/10.jpg', title: 'Test 6 first paper' ,url: 'watch.html?video=test6firstpaper'},
+    { image: 'img/video_image/11.jpg', title: 'Test 6 second paper' ,url: 'watch.html?video=test6secondepaper'},
+    { image: 'img/video_image/12.jpg', title: 'Test 7 first paper' ,url: 'watch.html?video=test7firstpaper'},
+    { image: 'img/video_image/13.jpg', title: 'Test 7 second paper' ,url: 'watch.html?video=test7secondepaper'},
+    { image: 'img/video_image/14.jpg', title: 'Test 8 first paper' ,url: 'watch.html?video=test8firstpaper'},
+    { image: 'img/video_image/15.jpg', title: 'Test 8 second paper' ,url: 'watch.html?video=test8secondepaper'},
+    { image: 'img/video_image/16.jpg', title: 'Test 9 second paper' ,url: 'watch.html?video=test9secondepaper'},
+    { image: 'img/video_image/17.jpg', title: 'Test 10 second paper' ,url: 'watch.html?video=test10secondepaper'},
+    { image: 'img/video_image/18.jpg', title: 'Test 11 second paper' ,url: 'watch.html?video=test11secondepaper'},
+    { image: 'img/video_image/19.jpg', title: 'Test 12 second paper' ,url: 'watch.html?video=test12secondepaper'},
+    { image: 'img/video_image/20.jpg', title: 'Test 13 second paper' ,url: 'watch.html?video=test13secondepaper'}
+];
+
+const gridContainer = document.querySelector('.product-item');
+
+products.forEach((product) => {
+    const cardHTML = `
+        <div class="col-md-4">
+            <div class="product-card"  data-url="${product.url}">
+                <img src="${product.image}" width="100%" alt="${product.title}" class="product-image" >
+                <h2 class="product-title">${product.title}</h2>
+            </div>
+        </div>
+    `;
+    gridContainer.innerHTML += cardHTML;
+});
+
+// select all product cards
+const productCards = document.querySelectorAll('.product-card');
+
+
+
+// add hover animation to each product card
+productCards.forEach((card) => {
+
+    card.addEventListener('click', (event) => {
+
+        const cardElement = event.target.closest('.product-card'); // get the closest product card element
+        const url = cardElement.getAttribute('data-url');
+
+        if (url) {
+            window.location.href = url;
+        } else {
+            console.error("No URL found!");
+        }
+    });
+});
+
+var player = videojs('my-video');
+
+// Enable the quality selector plugin
+// player.httpSourceSelector();
+  // Automatically select the highest quality on startup
+//   player.on('loadedmetadata', function() {
+    // var qualityLevels = player.qualityLevels();
+    // var bestQuality = qualityLevels.length - 1;
+    // qualityLevels.selectedIndex_ = bestQuality;  // Select the highest quality by default
+//   });
+
+
+// Add event listener for autoplaying the video
+player.ready(function() {
+    console.log("auto paly")
+    player.play();
+  });
