@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Call API
-        fetch('https://general-english-24-server-production.up.railway.app/user/check-user', {  // Replace with your API endpoint
+        fetch('https://app.dushmanthaacademy.com/user/check-user', {  // Replace with your API endpoint
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

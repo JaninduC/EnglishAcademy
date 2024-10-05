@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = Object.fromEntries(formData.entries());
 
         // Define the API endpoint
-        const apiEndpoint = 'https://general-english-24-server-production.up.railway.app/user/signup';
+        const apiEndpoint = 'https://app.dushmanthaacademy.com/user/signup';
 
         try {
             const response = await fetch(apiEndpoint, {
